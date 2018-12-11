@@ -7,27 +7,14 @@
 
 using namespace std;
 
-typedef unsigned long count_t;  /* Counter type */
-
-/* Current file counters: chars, words, lines */
-count_t ccount;
-count_t wcount;
-count_t lcount;
-
-/* Totals counters: chars, words, lines */
-count_t total_ccount = 0;
-count_t total_wcount = 0;
-count_t total_lcount = 0;
-
-
 int countLine(std::istream& ins);
 int countChar(std::istream& ins);
 
-int main()
+int main()///opens a file based on user input and calls the functions to count the characters and lines
 {
     ifstream fin;
     ofstream fout;
-    string filename;
+    string filename;///name of the file to open with txt
 
     cout<<"Begin by entering your filename: \n (enter nothing for default case)\n";
     getline(cin,filename);
@@ -54,7 +41,7 @@ int main()
             cout<<"No file named " << filename << "\n";
         }
     }
-    else
+    else///if no filename entered, it runs the default
     {
         filename = "Ohio_University.txt";
         fin.open(filename.c_str());
@@ -81,9 +68,9 @@ int main()
     }
 }
 
-int countLine(std::istream& ins)
+int countLine(std::istream& ins)///counts the number of lines in a file
 {
-    int lCount=1;
+    int lCount=1; ///number of lines counted
     while(!ins.eof())
     {
         if(ins.peek()!= '\n' )
@@ -99,9 +86,9 @@ int countLine(std::istream& ins)
     cout<< lCount<< " Lines\n";
     return lCount;
 }
-int countChar(std::istream& ins)
+int countChar(std::istream& ins) ///Counts the number of characters
 {
-    int cCount=0;
+    int cCount=0;///number of characters counted
     while(!ins.eof())
     {
         if(ins.peek()== '\n' )
